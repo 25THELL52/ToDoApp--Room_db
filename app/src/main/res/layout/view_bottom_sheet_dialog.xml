@@ -36,7 +36,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
 android:textColor="@color/white"
-        android:backgroundTint="@color/Fuchsia2"
+        android:backgroundTint="@color/Fuchsia1"
         android:padding="16sp"
         android:text="Save" />
 </LinearLayout>
