@@ -6,7 +6,7 @@
 
 
 ## Features 
-### MVVM, LiveDta, viewBinding, RoomDB, coroutines, Dagger Hilt, RecyclerView, BottomSheetDialog,
+### MVVM, LiveDta, viewBinding, RoomDB, Coroutines, Dagger Hilt, RecyclerView, BottomSheetDialog,
 #
 
 
