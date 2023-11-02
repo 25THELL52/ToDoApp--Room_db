@@ -73,8 +73,11 @@ class ToDoListFragment : Fragment(), MyView {
                 bottomSheetBinding.TitleTv.text = "New Task"
                 bottomSheetBinding.newInfoEt.hint = "Add New Task Here"
                 bottomSheetBinding.SaveBtn.setOnClickListener {
-                    toDoListViewModel.addNewTask(Task(Title = bottomSheetBinding.newInfoEt.text.toString()))
-                    this.dismiss()
+
+                    if(!bottomSheetBinding.newInfoEt.text.toString().isNullOrBlank()) {
+                        toDoListViewModel.addNewTask(Task(Title = bottomSheetBinding.newInfoEt.text.toString()))
+                        this.dismiss()
+                    }
                 }
                 this.setContentView(bottomSheetBinding.root)
                 this.show()
@@ -82,8 +85,9 @@ class ToDoListFragment : Fragment(), MyView {
         }
     }
 
-    override fun setOnClickListener(holder: View,task: Task) {
-        holder.setOnClickListener {
+    override fun setItemViewOnClickListener(itemView: View,task: Task) {
+
+        itemView.setOnClickListener {
 
             val bundle = Bundle()
             bundle.putInt("current_task_id",task.id)
@@ -91,6 +95,16 @@ class ToDoListFragment : Fragment(), MyView {
             view?.let { it1 -> Navigation.findNavController(it1).navigate(R.id.action_toDoListFragment_to_detailFragment,bundle) }
 
         }
+    }
+
+    override fun setDeleteImageButtonOnClickListener(imageButton: View, task: Task) {
+        imageButton.setOnClickListener {
+            deleteTask(task)
+        }
+    }
+
+    private fun deleteTask(task: Task) {
+        toDoListViewModel.deleteTask(task)
     }
 
 

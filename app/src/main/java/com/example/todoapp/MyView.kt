@@ -5,6 +5,7 @@ import com.example.todoapp.Model.Task
 
 interface MyView {
 
-    fun setOnClickListener(holder: View,task: Task)
+    fun setItemViewOnClickListener(itemView:  View,task: Task)
+    fun setDeleteImageButtonOnClickListener(imageButton: View, task: Task)
 
 }

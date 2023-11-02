@@ -29,8 +29,9 @@ class ToDoListViewModel @Inject constructor(private val toDoAppRepository: ToDoA
 
     fun deleteTask(task: Task) {
 
+        CoroutineScope(Dispatchers.IO).launch {
+            toDoAppRepository.deleteTaskWithId(task.id)        }
 
-            toDoAppRepository.deleteTaskWithId(task.id)
 
     }
 

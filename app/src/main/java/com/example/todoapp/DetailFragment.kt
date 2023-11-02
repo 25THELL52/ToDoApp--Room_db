@@ -105,13 +105,14 @@ class DetailFragment : Fragment() {
                 bottomSheetBinding.SaveBtn.setOnClickListener {
                     Log.d("message","currentTask: ${getCurrentTask()}")
 
+                    if(!bottomSheetBinding.newInfoEt.text.toString().isNullOrBlank()) {
                         getCurrentTask()?.let { it2 ->
                             detailViewModel.editTask(
                                 it2,
                                 bottomSheetBinding.newInfoEt.text.toString()
                             )
                         }
-
+                    }
                     this.dismiss()
                 }
                 setContentView(bottomSheetBinding.root)

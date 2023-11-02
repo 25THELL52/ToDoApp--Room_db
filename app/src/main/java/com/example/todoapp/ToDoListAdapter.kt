@@ -1,8 +1,11 @@
 package com.example.todoapp
 
+import android.graphics.drawable.Icon
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.todoapp.Model.Task
@@ -23,10 +26,13 @@ class ToDoListAdapter(private val myView:MyView
         holder.Task_Title_list_fg.text = tasksList[position].Title
         holder.Brief_task_detail.text = tasksList[position].
         taskDetailsList.joinToString(separator = "\n")
-        myView.setOnClickListener(holder.itemView,tasksList[position])
+        myView.setItemViewOnClickListener(holder.itemView,tasksList[position])
+        myView.setDeleteImageButtonOnClickListener(holder.delete_task_imb,tasksList[position])
+        }
 
 
-    }
+
+
     override fun getItemCount(): Int {
         return tasksList.size
     }
@@ -41,6 +47,7 @@ class ToDoListAdapter(private val myView:MyView
 
         val Task_Title_list_fg = itemView.findViewById<TextView>(R.id.Task_Title_list_fg)
         val Brief_task_detail = itemView.findViewById<TextView>(R.id.Brief_task_detail)
+        val delete_task_imb= itemView.findViewById<ImageButton>(R.id.delete_task_imb)
 
     }
 }
