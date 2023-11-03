@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.todoapp.Model.Task
+import com.example.todoapp.Model.TaskDetail
 import com.example.todoapp.data.repository.ToDoAppRepository
 import com.example.todoapp.databinding.FragmentToDoListBinding
 import com.example.todoapp.databinding.ViewBottomSheetDialogBinding
@@ -101,6 +102,10 @@ class ToDoListFragment : Fragment(), MyView {
         imageButton.setOnClickListener {
             deleteTask(task)
         }
+    }
+
+    override fun getTaskDetailsListFromTaskDetailsIdsList(taskDetailsIdsList: List<String>): List<TaskDetail> {
+                   return toDoListViewModel.getTaskDetailsListFromTaskDetailsIdsList(taskDetailsIdsList)
     }
 
     private fun deleteTask(task: Task) {

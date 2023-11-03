@@ -4,19 +4,29 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginTop="8dp"
-    android:layout_marginStart="8dp"
     android:layout_marginEnd="8dp"
 
 
     >
 
+    <CheckBox
+        android:id="@+id/check_task_detail"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:textColorLink="#070707"
+        app:layout_constraintBottom_toBottomOf="@id/TaskDetailtv"
+
+        app:layout_constraintEnd_toStartOf="@id/TaskDetailtv"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/TaskDetailtv" />
+
     <TextView
         android:id="@+id/TaskDetailtv"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="TextView"
         android:textSize="15dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@id/check_task_detail"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

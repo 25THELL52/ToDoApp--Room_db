@@ -7,5 +7,5 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity(tableName = "Tasks")
-data class Task(@PrimaryKey(autoGenerate = true) val id : Int =0, @ColumnInfo(name="TITLE") val Title : String, @ColumnInfo(name="TaskDetailsList") val taskDetailsList : List<String> = listOf())
+data class Task(@PrimaryKey(autoGenerate = true) val id : Int =0, @ColumnInfo(name="TITLE") val Title : String, @ColumnInfo(name="TaskDetailsIdsList") val taskDetailsIdsList : List<String> = listOf())
 {}

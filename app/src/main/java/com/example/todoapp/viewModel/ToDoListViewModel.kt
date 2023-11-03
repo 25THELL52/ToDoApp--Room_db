@@ -15,7 +15,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class ToDoListViewModel @Inject constructor(private val toDoAppRepository: ToDoAppRepository) :
-    ViewModel() {
+    CommunViewModel(toDoAppRepository) {
 
 
 

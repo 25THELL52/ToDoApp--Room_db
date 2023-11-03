@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.todoapp.Model.Task
+import com.example.todoapp.Model.TaskDetail
 import com.example.todoapp.data.local.ToDoAppDao
 import javax.inject.Inject
 
@@ -15,12 +16,21 @@ class ToDoAppRepositoryImpl @Inject constructor(private val toDoAppDao: ToDoAppD
 
     }
 
-    override  fun editTask(task: Task, taskDetail: String) {
-        toDoAppDao.addNewTask(task.copy(taskDetailsList = task.taskDetailsList + taskDetail))
+    override  fun editTask(task: Task, taskDetailId: String) {
+        toDoAppDao.addNewTask(task.copy(taskDetailsIdsList = task.taskDetailsIdsList + taskDetailId))
 
-        Log.d("message","before adding $taskDetail : $task.taskDetailsList.joinToString()")
-        val myTask = task.copy(taskDetailsList = task.taskDetailsList + taskDetail)
-        Log.d("message"," after adding $taskDetail : $myTask.taskDetailsList.joinToString()")
+        Log.d("message","before adding $taskDetailId : $task.taskDetailsList.joinToString()")
+        val myTask = task.copy(taskDetailsIdsList = task.taskDetailsIdsList + taskDetailId)
+        Log.d("message"," after adding $taskDetailId : $myTask.taskDetailsList.joinToString()")
+    }
+
+    override fun getTaskDetailWithId(taskDetailId: String): TaskDetail {
+         return   toDoAppDao.getTaskDetailWithId(taskDetailId)
+
+    }
+
+    override fun editTaskDetail(taskDetail: TaskDetail, isChecked: Boolean) {
+        toDoAppDao.addTaskDetail(taskDetail.copy(isChecked = isChecked ))
     }
 
     override  fun deleteTaskWithId(id: Int) {
@@ -34,12 +44,18 @@ class ToDoAppRepositoryImpl @Inject constructor(private val toDoAppDao: ToDoAppD
 
         return toDoAppDao.getAllTasks()
     }
+    /*
 
-    override fun getTaskDetails(task: Task):LiveData<List<String>> {
+    override fun getTaskDetailsIds(task: Task):LiveData<List<Int>> {
 
-        return toDoAppDao.getTaskDetails(task.id)
+        return toDoAppDao.getTaskDetailsIds(task.id)
 
     }
+
+     */
+
+    override fun addTaskDetail(taskDetail: TaskDetail) {
+    toDoAppDao.addTaskDetail(taskDetail)    }
 
 
 }
